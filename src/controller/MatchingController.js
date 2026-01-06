@@ -1,5 +1,6 @@
 import Crews from '../model/Crews.js';
 import Pairs from '../model/Pairs.js';
+import OutputView from '../view/OutputView.js';
 
 class MatchingController {
   pairs;
@@ -25,6 +26,8 @@ class MatchingController {
     }
 
     this.pairs[course][level][mission] = pairs;
+
+    OutputView.printMatchingResult(this.pairs[course][level][mission]);
   }
 }
 
