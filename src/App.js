@@ -8,6 +8,8 @@ class App {
       if (funcNum === 'Q') return;
       else if (funcNum === '1') {
         OutputView.printCourseAndMission();
+        const [course, level, mission] =
+          await InputView.readCourseLevelMission();
       } else if (funcNum === '2') console.log('2');
       else if (funcNum === '3') console.log('3');
     }
