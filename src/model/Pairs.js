@@ -12,6 +12,10 @@ class Pairs {
   addCrew(name) {
     this.#names.push(name);
   }
+
+  isSame(names) {
+    return names.every((name) => this.#names.includes(name));
+  }
 }
 
 export default Pairs;
