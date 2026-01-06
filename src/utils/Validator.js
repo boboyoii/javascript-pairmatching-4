@@ -1,4 +1,4 @@
-import { COURSES, MENUS } from '../constants/pairmatching.js';
+import { COURSES, LEVELS, MENUS } from '../constants/pairmatching.js';
 
 const Validator = {
   isValidFuncNum(num) {
@@ -8,6 +8,10 @@ const Validator = {
   isValidCourse(course) {
     if (!Object.keys(COURSES).includes(course))
       throw new Error('[ERROR] 해당 과정은 없는 과정입니다.');
+  },
+  isValidLevel(level) {
+    if (!LEVELS.includes(level))
+      throw new Error('[ERROR] 해당 레벨은 없는 레벨 입니다.');
   },
 };
 

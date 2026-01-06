@@ -13,7 +13,10 @@ const InputView = {
       PROGRESS_MESSAGE.INPUT_COURSE_LEVEL_MISSION
     );
     const [course, level, mission] = input.split(',').map((val) => val.trim());
+
     Validator.isValidCourse(course);
+    Validator.isValidLevel(level);
+
     return [course, level, mission];
   },
 };
