@@ -1,8 +1,8 @@
 export const MENUS = ['1', '2', '3', 'Q'];
 
 export const COURSES = Object.freeze({
-  BACK: '백엔드',
-  FRONT: '프론트엔드',
+  백엔드: 'backend',
+  프론트엔드: 'frontend',
 });
 
 export const LEVELS = ['레벨1', '레벨2', '레벨3', '레벨4', '레벨5'];

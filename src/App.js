@@ -1,7 +1,14 @@
+import MatchingController from './controller/MatchingController.js';
 import InputView from './view/InputView.js';
 import OutputView from './view/OutputView.js';
 
 class App {
+  matchingController;
+
+  constructor() {
+    this.matchingController = new MatchingController();
+  }
+
   async run() {
     while (true) {
       const funcNum = await InputView.readFuncNum();
@@ -10,6 +17,7 @@ class App {
         OutputView.printCourseAndMission();
         const [course, level, mission] =
           await InputView.readCourseLevelMission();
+        this.matchingController.runPairMatching(course, level, mission);
       } else if (funcNum === '2') console.log('2');
       else if (funcNum === '3') console.log('3');
     }
