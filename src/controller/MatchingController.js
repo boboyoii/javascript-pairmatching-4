@@ -63,6 +63,11 @@ class MatchingController {
     Validator.isExistMatchingResult(matchingResult);
     OutputView.printMatchingResult(this.pairs[course][level][mission]);
   }
+
+  reset() {
+    this.pairs = { 백엔드: {}, 프론트엔드: {} };
+    OutputView.printReset();
+  }
 }
 
 export default MatchingController;

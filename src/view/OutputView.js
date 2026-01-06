@@ -16,6 +16,9 @@ export const OutputView = {
     paris.forEach((pair) => Console.print(`${pair.getNames().join(' : ')}`));
     Console.print('');
   },
+  printReset() {
+    Console.print('\n초기화 되었습니다.\n');
+  },
 };
 
 export default OutputView;

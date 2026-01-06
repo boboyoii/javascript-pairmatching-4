@@ -27,7 +27,7 @@ class App {
           await InputView.readCourseLevelMission();
 
         this.matchingController.showPairMatching(course, level, mission);
-      } else if (funcNum === '3') console.log('3');
+      } else if (funcNum === '3') this.matchingController.reset();
     }
   }
 }
