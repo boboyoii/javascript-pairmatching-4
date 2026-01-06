@@ -15,19 +15,48 @@ class MatchingController {
 
     if (!this.pairs[course][level]) this.pairs[course][level] = {};
 
-    let pairs = [];
-    for (let i = 0; i < shffleCrews.length - 1; i += 2) {
-      const pair = new Pairs(shffleCrews.slice(i, i + 2));
+    let pairs;
+    let success;
 
-      if (i === shffleCrews.length - 3 && shffleCrews.length % 2 !== 0)
-        pair.addCrew(shffleCrews[i + 2]);
+    for (let time = 1; time <= 3; time++) {
+      pairs = [];
+      success = true;
+      for (let i = 0; i < shffleCrews.length - 1; i += 2) {
+        const pair = new Pairs(shffleCrews.slice(i, i + 2));
 
-      pairs.push(pair);
+        if (i === shffleCrews.length - 3 && shffleCrews.length % 2 !== 0)
+          pair.addCrew(shffleCrews[i + 2]);
+
+        if (!this.#checkUniquPair(pair, course, level, mission)) {
+          success = false;
+          break;
+        }
+
+        pairs.push(pair);
+      }
     }
 
-    this.pairs[course][level][mission] = pairs;
+    if (success) {
+      this.pairs[course][level][mission] = pairs;
+      OutputView.printMatchingResult(this.pairs[course][level][mission]);
+      return;
+    }
 
-    OutputView.printMatchingResult(this.pairs[course][level][mission]);
+    OutputView.printMatchingError();
+  }
+
+  #checkUniquPair(pair, course, level, thisMission) {
+    const names = pair.getNames();
+    const sameLevel = this.pairs[course][level];
+
+    for (const mission in sameLevel) {
+      if (thisMission === mission) continue;
+      sameLevel[mission].forEach((pair) => {
+        if (pair.isSame(names)) return false;
+      });
+    }
+
+    return true;
   }
 }
 

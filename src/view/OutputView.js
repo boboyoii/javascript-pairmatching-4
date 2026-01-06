@@ -16,6 +16,9 @@ export const OutputView = {
     paris.forEach((pair) => Console.print(`${pair.getNames().join(' : ')}`));
     Console.print('');
   },
+  printMatchingError() {
+    Console.print('[ERROR] 매칭에 실패했습니다.');
+  },
 };
 
 export default OutputView;
