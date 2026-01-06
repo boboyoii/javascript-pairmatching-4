@@ -20,6 +20,14 @@ const InputView = {
 
     return [course, level, mission];
   },
+  async readYesOrNo() {
+    const answer = await Console.readLineAsync(
+      PROGRESS_MESSAGE.INPUT_YES_OR_NO
+    );
+
+    Validator.isValidAnswer(answer);
+    return answer;
+  },
 };
 
 export default InputView;

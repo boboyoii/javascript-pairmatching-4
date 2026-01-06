@@ -23,6 +23,10 @@ const Validator = {
   isExistMatchingResult(matchingResult) {
     if (!matchingResult) throw new Error('[ERROR] 매칭 이력이 없습니다.');
   },
+  isValidAnswer(answer) {
+    if (!(answer === '예' || answer === '아니오'))
+      throw new Error('[ERROR] 대답은 예,아니오로 입력해주세요.');
+  },
 };
 
 export default Validator;
