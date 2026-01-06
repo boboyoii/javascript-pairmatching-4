@@ -1,5 +1,6 @@
 import Crews from '../model/Crews.js';
 import Pairs from '../model/Pairs.js';
+import Validator from '../utils/Validator.js';
 import OutputView from '../view/OutputView.js';
 
 class MatchingController {
@@ -34,15 +35,13 @@ class MatchingController {
 
         pairs.push(pair);
       }
+      if (success) break;
     }
 
-    if (success) {
-      this.pairs[course][level][mission] = pairs;
-      OutputView.printMatchingResult(this.pairs[course][level][mission]);
-      return;
-    }
+    Validator.isValidMachingSuccess(success);
 
-    OutputView.printMatchingError();
+    this.pairs[course][level][mission] = pairs;
+    OutputView.printMatchingResult(this.pairs[course][level][mission]);
   }
 
   #checkUniquPair(pair, course, level, thisMission) {
@@ -57,6 +56,12 @@ class MatchingController {
     }
 
     return true;
+  }
+
+  showPairMatching(course, level, mission) {
+    const matchingResult = this.pairs[course][level][mission];
+    Validator.isExistMatchingResult(matchingResult);
+    OutputView.printMatchingResult(this.pairs[course][level][mission]);
   }
 }
 

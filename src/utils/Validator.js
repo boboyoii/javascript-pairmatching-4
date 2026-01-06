@@ -17,6 +17,12 @@ const Validator = {
     if (!MISSIONS[level].includes(mission))
       throw new Error('[ERROR] 해당 레벨에 없는 미션입니다.');
   },
+  isValidMachingSuccess(success) {
+    if (!success) throw new Error('[ERROR] 매칭에 실패했습니다.');
+  },
+  isExistMatchingResult(matchingResult) {
+    if (!matchingResult) throw new Error('[ERROR] 매칭 이력이 없습니다.');
+  },
 };
 
 export default Validator;
