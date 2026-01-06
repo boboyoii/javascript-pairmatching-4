@@ -1,4 +1,4 @@
-import { COURSES, LEVELS, MENUS } from '../constants/pairmatching.js';
+import { COURSES, LEVELS, MENUS, MISSIONS } from '../constants/pairmatching.js';
 
 const Validator = {
   isValidFuncNum(num) {
@@ -12,6 +12,10 @@ const Validator = {
   isValidLevel(level) {
     if (!LEVELS.includes(level))
       throw new Error('[ERROR] 해당 레벨은 없는 레벨 입니다.');
+  },
+  isValidMission(level, mission) {
+    if (!MISSIONS[level].includes(mission))
+      throw new Error('[ERROR] 해당 레벨에 없는 미션입니다.');
   },
 };
 

@@ -16,6 +16,7 @@ const InputView = {
 
     Validator.isValidCourse(course);
     Validator.isValidLevel(level);
+    Validator.isValidMission(level, mission);
 
     return [course, level, mission];
   },
